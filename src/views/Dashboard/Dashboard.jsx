@@ -132,7 +132,7 @@ function Dashboard({ classes }) {
       }
     };
     addRow();
-  }, []);
+  }, [emailsSubscriptionChartMonthly]);
 
   useEffect(() => {
     const addRow = async () => {
@@ -173,7 +173,7 @@ function Dashboard({ classes }) {
       }
     };
     addRow();
-  }, []);
+  }, [dailySalesChart]);
 
   return (
     <div>

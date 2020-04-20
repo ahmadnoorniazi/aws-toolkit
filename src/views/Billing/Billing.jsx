@@ -92,7 +92,7 @@ function Billing() {
     if (window.screen.width >= 992) {
       setWidth(450);
     }
-  }, []);
+  }, [getProductData]);
 
   useEffect(() => {
     const total =
@@ -119,7 +119,7 @@ function Billing() {
   };
 
   const getDefaultPrice = name => {
-    return products.find(item => item.name == name);
+    return products.find(item => item.name === name);
   };
 
   const addItemtoCart = item => {

@@ -62,6 +62,7 @@ class ComponentToPrint extends React.Component {
     return (
       <div className="invoice-box">
         <img
+          alt="profile"
           src={Image}
           style={{ width: "100%", maxWidth: "300px", marginTop: "-100px" }}
         />
@@ -160,7 +161,7 @@ class Example extends React.Component {
       <div>
         <ReactToPrint
           trigger={() => (
-            <a href="#">
+            <a href="/">
               <ButtonProp />
             </a>
           )}
