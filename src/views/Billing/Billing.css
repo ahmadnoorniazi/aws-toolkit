@@ -1,0 +1,172 @@
+.MuiIcon-root{
+  color: #01579b;
+}
+.grid-container {
+    display: grid;
+    align-content: center;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    margin-left: 30px;
+    background-color: #FFF;
+
+  }
+  .MuiTableBody-root > tr > td {
+    text-align: center;
+  }
+  
+  .MTableToolbar-actions-303 > div > div {
+    display: inline-flex;
+  }
+  .grid-container > div {
+    background-color: #01579b;
+    text-align: center;
+    padding: 50px 0;
+    font-size: 30px;
+    color: #FFF;
+  ;
+  }
+  .grid-container > div:focus {
+    background-color : #FFF;
+    border: 3px solid #01579b;
+    color: #01579b;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .grid-container {
+      grid-template-columns: auto auto auto auto;
+    }
+  } 
+  .grid-container > div:hover {
+    background-color : #FFF;
+    border: 3px solid #01579b;
+    color: #01579b;
+  }
+  .invoice-box {
+    display: none;
+    }
+  
+  @media print {
+    .invoice-box{
+      display: block;
+    }
+  }
+/* 
+  .MuiTableRow-root > tr{
+    height: 500px;
+  }
+  .MuiTablePagination-toolbar{
+    border: none;
+  }
+  .MuiTablePagination-select > div {
+    display: none;
+    color: #FFF;
+  }
+  .MuiTablePagination-selectIcon{
+    display: none;
+  } */
+/* .MTablePaginationInner-root-359{
+    background-color: #FFF;
+  } */
+/* 
+  .MTablePaginationInner-root-359 > span > button{
+    color: #01579b;
+    background-color:  #01579b;
+    
+  }
+  .MTablePaginationInner-root-359 > span > button > span > span{
+    color: #FFF;
+    
+  }
+  .MuiIconButton , .MuiButtonBase-root, .MuiIconButton-root.Mui-disabled{
+    color: #01579b;
+    background-color:  #01579b;
+
+  } */
+  /* #top > .MuiIconButton-label{
+    color: #01579b;
+    background-color: #01579b;
+  } */
+  .MuiTypography-caption{
+    color: #01579b;
+    font-weight: 1rem;
+    font-size: large;
+  }
+
+  #top,
+  #bottom {
+      position: fixed;
+      left: 0;
+      right: 0;
+  }
+  
+  #bottom {
+      bottom: 0;
+      height: 10%;
+      background-color: #42A5F5;
+      text-align: center;
+  
+  }
+
+  #top {
+    top: 0;
+    height: 90%;
+
+}
+
+
+  #topTable {
+    top: 0;
+    height: 50%;
+
+}
+
+#bottomTable {
+    bottom: 0;
+    height: 100%;
+
+}
+
+
+  #bottomTable > table {
+    width:100%;
+  }
+
+  #bottomTable > table, th, td {
+    border: 2px solid #FFF;
+    border-collapse: collapse;
+  }
+  #bottomTable > th, td {
+    padding: 15px;
+    text-align: left;
+  }
+  #bottomTable >  table#t01 >  th {
+    background-color: rgb(1, 87, 155);
+    color: white;
+  }
+  #bottomTable > table#t01 > tr >td{
+    background-color:  rgb(1, 87, 155);
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .Component-paginationSelectRoot-281{
+    display: none;
+  }
+
+  .wrapper {
+    min-height: 100%;
+  
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+    background-color: #42A5F5;
+  }
+  .footer,
+  .push {
+    height: 50px;
+  }
+
+  .discount-field{
+    width: 100px;
+  }

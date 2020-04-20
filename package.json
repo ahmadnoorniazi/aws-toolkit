@@ -1,0 +1,107 @@
+{
+  "name": "material-dashboard-react",
+  "version": "1.7.0",
+  "private": false,
+  "dependencies": {
+    "@material-ui/core": "^4.9.7",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.46",
+    "assert": "^2.0.0",
+    "axios": "^0.19.2",
+    "chartist": "0.10.1",
+    "classnames": "2.2.6",
+    "filepond": "^4.13.0",
+    "filepond-plugin-file-encode": "^2.1.5",
+    "filepond-plugin-image-exif-orientation": "^1.0.6",
+    "filepond-plugin-image-preview": "^4.6.1",
+    "firebase": "^6.3.1",
+    "firebase-admin": "^8.2.0",
+    "foreman": "^3.0.1",
+    "history": "4.9.0",
+    "lodash": "^4.17.15",
+    "material-table": "^1.40.1",
+    "mongodb": "^3.5.5",
+    "mongoose": "^5.9.5",
+    "notistack": "^0.9.9",
+    "perfect-scrollbar": "1.4.0",
+    "prop-types": "15.7.2",
+    "react": "16.8.6",
+    "react-chartist": "0.13.3",
+    "react-dom": "16.8.6",
+    "react-filepond": "^7.0.1",
+    "react-google-maps": "9.4.5",
+    "react-router-dom": "5.0.1",
+    "react-scripts": "3.0.1",
+    "react-select": "^3.0.4",
+    "react-swipeable-views": "0.13.3",
+    "react-to-print": "^2.6.3",
+    "react-toastify": "^5.5.0",
+    "serve": "^11.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "copy": "cp -r src/index.js src/assets/",
+    "build": "react-scripts build && npm run build-package && npm run build-server",
+    "build-2": "react-scripts build && npm run build-package",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "lint:check": "eslint . --ext=js,jsx;  exit 0",
+    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
+    "build-package-css": "cp -r src/assets/css/material-dashboard-react.css build/",
+    "build-server": "cp -r employee_backend/build build/",
+    "srt": "electron . --fork > logs/mylog/mylog.txt",
+    "build-package": "npm run build-package-css",
+    "deploy": "gh-pages -d build",
+    "dev": "nf start",
+    "electron": "electron .",
+    "ebuild": "npm run build && ./node_modules/.bin/electron-builder build",
+    "eBuildWin": "npm run build && ./node_modules/.bin/electron-builder build  --win --x64",
+    "deploy-pm2": "npm run build-2 && pm2 start ./server.sh --name ahmadnoor"
+  },
+  "description": "React Electron App",
+  "homepage": "./",
+  "main": "electron/main.js",
+  "build": {
+    "extends": null,
+    "productName": "React Electron App",
+    "appId": "com.example.app",
+    "electronVersion": "1.8.2",
+    "files": [
+      "build/**/*",
+      "electron/*"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creativetimofficial/material-dashboard-react.git"
+  },
+  "keywords": [],
+  "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/creativetimofficial/material-dashboard-react/issues"
+  },
+  "optionalDependencies": {
+    "@types/googlemaps": "3.36.4",
+    "@types/markerclustererplus": "2.1.33",
+    "ajv": "6.10.0",
+    "typescript": "3.5.1"
+  },
+  "devDependencies": {
+    "electron": "^8.1.1",
+    "electron-builder": "^22.4.1",
+    "eslint-config-prettier": "4.3.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "gh-pages": "^2.2.0",
+    "prettier": "1.18.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": []
+  }
+}

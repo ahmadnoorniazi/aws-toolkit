@@ -1,0 +1,21 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.ScrollContainer {
+  overflow-y: scroll;
+  width: 100%;
+  height: 520px;
+  margin-top: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+  .ScrollContainer {
+    height: 701px;
+  }
+} 
+
+/* .ScrollChild {
+  height: 1000px;
+} */
