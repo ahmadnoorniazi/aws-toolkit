@@ -41,8 +41,8 @@
   "scripts": {
     "start": "react-scripts start",
     "copy": "cp -r src/index.js src/assets/",
-    "build": "react-scripts build && npm run build-package && npm run build-server",
-    "build-2": "react-scripts build && npm run build-package",
+    "build-2": "react-scripts build && npm run build-package && npm run build-server",
+    "build": "react-scripts build && npm run build-package",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
