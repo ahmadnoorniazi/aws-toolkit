@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // react plugin for creating charts
@@ -46,355 +46,357 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
-import {getRecord} from '../../utils'
+import { getRecord } from "../../utils";
 import { bugs, website, server } from "variables/general.jsx";
 import {
   emailsSubscriptionChart,
   completedTasksChart
 } from "variables/charts.jsx";
-import  Chartist from "chartist";
-import Table from 'components/Table/Table'
+import Chartist from "chartist";
+import Table from "components/Table/Table";
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
-function Dashboard({classes}) {
-  const [value, setValue] = useState(0)
-  const [data, setData] = useState(null)
-  const [dailySales, setDailyDales] = useState(null)
-  const [unpaidBills, setUnpaidBills] = useState(null)
+function Dashboard({ classes }) {
+  // const [, setValue] = useState(0);
+  const [data, setData] = useState(null);
+  const [, setDailyDales] = useState(null);
+  const [, setUnpaidBills] = useState(null);
   const [dailySalesChart, setDailyChart] = useState({
     data: {
-    labels: ["M", "T", "W", "T", "F", "S", "S"],
-    series: [[12, 17, 70, 17, 23, 18, 38]]
-  },
-  options: {
-    lineSmooth: Chartist.Interpolation.cardinal({
-      tension: 0
-    }),
-    low: 0,
-    high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-    chartPadding: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
-    }}}
-    )
-    const [emailsSubscriptionChartMonthly, setEmailChart] = useState({...emailsSubscriptionChart})
+      labels: ["M", "T", "W", "T", "F", "S", "S"],
+      series: [[12, 17, 70, 17, 23, 18, 38]]
+    },
+    options: {
+      lineSmooth: Chartist.Interpolation.cardinal({
+        tension: 0
+      }),
+      low: 0,
+      high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      chartPadding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+      }
+    }
+  });
+  const [emailsSubscriptionChartMonthly, setEmailChart] = useState({
+    ...emailsSubscriptionChart
+  });
 
-  const [loading, setIsLoading] = useState(false)
+  const [, setIsLoading] = useState(false);
 
- const handleChange = (event, value) => {
-   setValue(value)
-  };
+  // const handleChange = (event, value) => {
+  //   setValue(value);
+  // };
 
- const handleChangeIndex = index => {
-   setValue(index)
-  };
+  // const handleChangeIndex = index => {
+  //   setValue(index);
+  // };
 
   useEffect(() => {
     const getRecords = async () => {
       try {
-        console.log('listttttttttt beforeeeeeee')
-
-        const billsList = await getRecord('billing/getUnpaidBills')
-        setUnpaidBills(billsList.data || [])
+        const billsList = await getRecord("billing/getUnpaidBills");
+        setUnpaidBills(billsList.data || []);
       } catch (error) {
-        
+        // eslint-disable-next-line no-console
+        console.error(error);
       }
-    }
-    getRecords()
-  },[])
+    };
+    getRecords();
+  }, []);
 
   useEffect(() => {
-    const addRow = async (newData) => {
+    const addRow = async () => {
       setIsLoading(true);
       try {
-        const called = await getRecord('billing/getMonthly')
-        if (called.data){
-          const emptyArray = emailsSubscriptionChartMonthly.data.series[0]
-          for(var i=0; i < called.data.length; i++){
-            const ind = called.data[i]
-            emptyArray[ind._id-1] = ind.count
+        const called = await getRecord("billing/getMonthly");
+        if (called.data) {
+          const emptyArray = emailsSubscriptionChartMonthly.data.series[0];
+          for (var i = 0; i < called.data.length; i++) {
+            const ind = called.data[i];
+            emptyArray[ind._id - 1] = ind.count;
           }
-          console.log('dsfsdfsdsdfsd', emptyArray)
           setEmailChart({
             ...emailsSubscriptionChartMonthly,
-          data: {
-            ...emailsSubscriptionChartMonthly.data,
-            series: [emptyArray]
-          }
-          })
+            data: {
+              ...emailsSubscriptionChartMonthly.data,
+              series: [emptyArray]
+            }
+          });
         }
-        setIsLoading(false)
+        setIsLoading(false);
       } catch (error) {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
-    addRow()
-  }, [])
+    };
+    addRow();
+  }, []);
 
   useEffect(() => {
-    const addRow = async (newData) => {
+    const addRow = async () => {
       setIsLoading(true);
       try {
-        const called = await getRecord('billing/getAllSale')
-        setData(called.data ? called.data : [])
-        const getDaily = await getRecord('billing/getWeeklySale')
-        if (getDaily.data){
-          const statusArray = [0,0,0,0,0,0,0]
+        const called = await getRecord("billing/getAllSale");
+        setData(called.data ? called.data : []);
+        const getDaily = await getRecord("billing/getWeeklySale");
+        if (getDaily.data) {
+          const statusArray = [0, 0, 0, 0, 0, 0, 0];
           statusArray.forEach((item, index) => {
-            if(getDaily.data[index]){
-              const key = getDaily.data[index]._id
-              const sale = getDaily.data[index].sale
-              statusArray[key] = sale
+            if (getDaily.data[index]) {
+              const key = getDaily.data[index]._id;
+              const sale = getDaily.data[index].sale;
+              statusArray[key] = sale;
             }
-          })
-          const max =  Math.max(...statusArray);
-          const min =  Math.min(...statusArray);
+          });
+          const max = Math.max(...statusArray);
+          const min = Math.min(...statusArray);
 
           setDailyChart({
-           ...dailySalesChart,
+            ...dailySalesChart,
             data: {
               ...dailySalesChart.data,
               series: [statusArray]
             },
-            options:{
+            options: {
               ...dailySalesChart.options,
-              high:max,
-              low:min
+              high: max,
+              low: min
             }
-          })
+          });
         }
-        setDailyDales(getDaily.data)
-        setIsLoading(false)
+        setDailyDales(getDaily.data);
+        setIsLoading(false);
       } catch (error) {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
-    addRow()
-  },[])
-    return (
-      <div>
-        <GridContainer>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="warning" stats icon>
-                <CardIcon color="warning">
-                  <Icon>content_copy</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Total Sale</p>
-                <h3 className={classes.cardTitle}>Rs {data && data.total_sale ? data.total_sale: 0}</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Danger>
-                    <Warning />
-                  </Danger>
-                  <a href="#pablo" onClick={e => e.preventDefault()}>
-                   Total Sale
-                  </a>
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="success" stats icon>
-                <CardIcon color="success">
-                  <Store />
-                </CardIcon>
-                <p className={classes.cardCategory}>Profit</p>
-                <h3 className={classes.cardTitle}>Rs {data && data.total_profit ? data.total_profit: 0}</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <DateRange />
-                  Last 24 Hours
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="danger" stats icon>
-                <CardIcon color="danger">
-                  <Icon>info_outline</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Fixed Issues</p>
-                <h3 className={classes.cardTitle}>75</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <LocalOffer />
-                  Tracked from Github
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="info" stats icon>
-                <CardIcon color="info">
-                  <Accessibility />
-                </CardIcon>
-                <p className={classes.cardCategory}>Followers</p>
-                <h3 className={classes.cardTitle}>+245</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Update />
-                  Just Updated
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-        </GridContainer>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="success">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={dailySalesChart.data}
-                  type="Line"
-                  options={dailySalesChart.options}
-                  listener={dailySalesChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Daily Sales</h4>
-                <p className={classes.cardCategory}>
-                  <span className={classes.successText}>
-                    <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                  </span>{" "}
-                  increase in today sales.
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="warning">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={emailsSubscriptionChart.data}
-                  type="Bar"
-                  options={emailsSubscriptionChart.options}
-                  responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                  listener={emailsSubscriptionChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Email Subscriptions</h4>
-                <p className={classes.cardCategory}>
-                  Last Campaign Performance
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="danger">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={completedTasksChart.data}
-                  type="Line"
-                  options={completedTasksChart.options}
-                  listener={completedTasksChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Completed Tasks</h4>
-                <p className={classes.cardCategory}>
-                  Last Campaign Performance
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-        </GridContainer>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={6}>
-            <CustomTabs
-              title="Tasks:"
-              headerColor="primary"
-              tabs={[
-                {
-                  tabName: "Bugs",
-                  tabIcon: BugReport,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[0, 3]}
-                      tasksIndexes={[0, 1, 2, 3]}
-                      tasks={bugs}
-                    />
-                  )
-                },
-                {
-                  tabName: "Website",
-                  tabIcon: Code,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[0]}
-                      tasksIndexes={[0, 1]}
-                      tasks={website}
-                    />
-                  )
-                },
-                {
-                  tabName: "Server",
-                  tabIcon: Cloud,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[1]}
-                      tasksIndexes={[0, 1, 2]}
-                      tasks={server}
-                    />
-                  )
-                }
-              ]}
-            />
-          </GridItem>
-          <GridItem xs={12} sm={12} md={6}>
-            <Card>
-              <CardHeader color="warning">
-                <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
-                <p className={classes.cardCategoryWhite}>
-                  New employees on 15th September, 2016
-                </p>
-              </CardHeader>
-              <CardBody>
-                <Table
-                  tableHeaderColor="warning"
-                  tableHead={["Customer Name", "Amount", "Paid", "Amount"]}
-                  tableData={[
-                    ["1", "Dakota Rice", "$36,738", "Niger"],
-                    ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                    ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                    ["4", "Philip Chaney", "$38,735", "Korea, South"]
-                  ]}
-                />
-              </CardBody>
-            </Card>
-          </GridItem>
-        </GridContainer>
-      </div>
-    );
-  }
+    };
+    addRow();
+  }, []);
+
+  return (
+    <div>
+      <GridContainer>
+        <GridItem xs={12} sm={6} md={3}>
+          <Card>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <Icon>content_copy</Icon>
+              </CardIcon>
+              <p className={classes.cardCategory}>Total Sale</p>
+              <h3 className={classes.cardTitle}>
+                Rs {data && data.total_sale ? data.total_sale : 0}
+              </h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <Danger>
+                  <Warning />
+                </Danger>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                  Total Sale
+                </a>
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={6} md={3}>
+          <Card>
+            <CardHeader color="success" stats icon>
+              <CardIcon color="success">
+                <Store />
+              </CardIcon>
+              <p className={classes.cardCategory}>Profit</p>
+              <h3 className={classes.cardTitle}>
+                Rs {data && data.total_profit ? data.total_profit : 0}
+              </h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <DateRange />
+                Last 24 Hours
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={6} md={3}>
+          <Card>
+            <CardHeader color="danger" stats icon>
+              <CardIcon color="danger">
+                <Icon>info_outline</Icon>
+              </CardIcon>
+              <p className={classes.cardCategory}>Fixed Issues</p>
+              <h3 className={classes.cardTitle}>75</h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <LocalOffer />
+                Tracked from Github
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={6} md={3}>
+          <Card>
+            <CardHeader color="info" stats icon>
+              <CardIcon color="info">
+                <Accessibility />
+              </CardIcon>
+              <p className={classes.cardCategory}>Followers</p>
+              <h3 className={classes.cardTitle}>+245</h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <Update />
+                Just Updated
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+      </GridContainer>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={4}>
+          <Card chart>
+            <CardHeader color="success">
+              <ChartistGraph
+                className="ct-chart"
+                data={dailySalesChart.data}
+                type="Line"
+                options={dailySalesChart.options}
+                listener={dailySalesChart.animation}
+              />
+            </CardHeader>
+            <CardBody>
+              <h4 className={classes.cardTitle}>Daily Sales</h4>
+              <p className={classes.cardCategory}>
+                <span className={classes.successText}>
+                  <ArrowUpward className={classes.upArrowCardCategory} /> 55%
+                </span>{" "}
+                increase in today sales.
+              </p>
+            </CardBody>
+            <CardFooter chart>
+              <div className={classes.stats}>
+                <AccessTime /> updated 4 minutes ago
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <Card chart>
+            <CardHeader color="warning">
+              <ChartistGraph
+                className="ct-chart"
+                data={emailsSubscriptionChart.data}
+                type="Bar"
+                options={emailsSubscriptionChart.options}
+                responsiveOptions={emailsSubscriptionChart.responsiveOptions}
+                listener={emailsSubscriptionChart.animation}
+              />
+            </CardHeader>
+            <CardBody>
+              <h4 className={classes.cardTitle}>Email Subscriptions</h4>
+              <p className={classes.cardCategory}>Last Campaign Performance</p>
+            </CardBody>
+            <CardFooter chart>
+              <div className={classes.stats}>
+                <AccessTime /> campaign sent 2 days ago
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <Card chart>
+            <CardHeader color="danger">
+              <ChartistGraph
+                className="ct-chart"
+                data={completedTasksChart.data}
+                type="Line"
+                options={completedTasksChart.options}
+                listener={completedTasksChart.animation}
+              />
+            </CardHeader>
+            <CardBody>
+              <h4 className={classes.cardTitle}>Completed Tasks</h4>
+              <p className={classes.cardCategory}>Last Campaign Performance</p>
+            </CardBody>
+            <CardFooter chart>
+              <div className={classes.stats}>
+                <AccessTime /> campaign sent 2 days ago
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+      </GridContainer>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={6}>
+          <CustomTabs
+            title="Tasks:"
+            headerColor="primary"
+            tabs={[
+              {
+                tabName: "Bugs",
+                tabIcon: BugReport,
+                tabContent: (
+                  <Tasks
+                    checkedIndexes={[0, 3]}
+                    tasksIndexes={[0, 1, 2, 3]}
+                    tasks={bugs}
+                  />
+                )
+              },
+              {
+                tabName: "Website",
+                tabIcon: Code,
+                tabContent: (
+                  <Tasks
+                    checkedIndexes={[0]}
+                    tasksIndexes={[0, 1]}
+                    tasks={website}
+                  />
+                )
+              },
+              {
+                tabName: "Server",
+                tabIcon: Cloud,
+                tabContent: (
+                  <Tasks
+                    checkedIndexes={[1]}
+                    tasksIndexes={[0, 1, 2]}
+                    tasks={server}
+                  />
+                )
+              }
+            ]}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={6}>
+          <Card>
+            <CardHeader color="warning">
+              <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
+              <p className={classes.cardCategoryWhite}>
+                New employees on 15th September, 2016
+              </p>
+            </CardHeader>
+            <CardBody>
+              <Table
+                tableHeaderColor="warning"
+                tableHead={["Customer Name", "Amount", "Paid", "Amount"]}
+                tableData={[
+                  ["1", "Dakota Rice", "$36,738", "Niger"],
+                  ["2", "Minerva Hooper", "$23,789", "Curaçao"],
+                  ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
+                  ["4", "Philip Chaney", "$38,735", "Korea, South"]
+                ]}
+              />
+            </CardBody>
+          </Card>
+        </GridItem>
+      </GridContainer>
+    </div>
+  );
+}
 
 Dashboard.propTypes = {
   classes: PropTypes.object.isRequired

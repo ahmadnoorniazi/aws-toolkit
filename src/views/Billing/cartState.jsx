@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import { createContext } from "react";
 
 const BillinCart = createContext({
   cart: [],
@@ -16,8 +16,8 @@ const BillinCart = createContext({
   taxValue: "",
   setTaxName: () => {},
   setTaxValue: () => {}
-})
+});
 
 export default BillinCart;
 
-export const Provider = BillinCart.Provider
+export const Provider = BillinCart.Provider;

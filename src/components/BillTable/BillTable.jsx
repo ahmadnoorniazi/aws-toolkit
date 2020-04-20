@@ -1,12 +1,17 @@
-import React, {useContext} from 'react';
-import MaterialTable from 'material-table';
-import { MyContext } from '../../stateContext'
-import { addRecord, updateRecord, deleteRecord } from '../../utils/index'
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+/* eslint-disable react/prop-types */
+import React from "react";
+import MaterialTable from "material-table";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
 
-export default function MaterialTableDemo({columns, data, isLoadig, addRow, updateRow, deleteRow}) {
-
+export default function MaterialTableDemo({
+  columns,
+  data,
+  isLoadig,
+  addRow,
+  updateRow,
+  deleteRow
+}) {
   return (
     <MaterialTable
       title="Add New Product"
@@ -22,26 +27,30 @@ export default function MaterialTableDemo({columns, data, isLoadig, addRow, upda
         exportButton: true,
         actionsColumnIndex: -1,
         headerStyle: {
-          backgroundColor: 'yellowgreen',
-          color: '#FFF'
+          backgroundColor: "yellowgreen",
+          color: "#FFF"
         },
         rowStyle: {
-          backgroundColor: '#EEE'
+          backgroundColor: "#EEE"
         },
         pageSize: 10
       }}
       icons={{
+        // eslint-disable-next-line react/display-name
         Add: props => (
           <Button
-          style={{backgroundColor: '#0069d9'}}
-          variant="contained"
-          color="primary"
-          size="large"
-          startIcon={<Icon className="fa fa-plus-circle" style={{ color: "#FFF" }} />}
-          {...props}
-        >
-        Add
-        </Button>)
+            style={{ backgroundColor: "#0069d9" }}
+            variant="contained"
+            color="primary"
+            size="large"
+            startIcon={
+              <Icon className="fa fa-plus-circle" style={{ color: "#FFF" }} />
+            }
+            {...props}
+          >
+            Add
+          </Button>
+        )
       }}
     />
   );

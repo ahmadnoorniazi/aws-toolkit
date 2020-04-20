@@ -1,42 +1,41 @@
-import React, {useContext} from 'react';
-import { MyContext } from '../../stateContext'
-import { addRecord, updateRecord, deleteRecord } from '../../utils/index'
-import Table from '../../components/BillTable/BillTable'
-
+import React, { useContext } from "react";
+import { MyContext } from "../../stateContext";
+import { addRecord, updateRecord, deleteRecord } from "../../utils/index";
+import Table from "../../components/BillTable/BillTable";
 
 export default function MaterialTableDemo() {
-  const [state, setState] = React.useState({
+  const [state] = React.useState({
     columns: [
-      { title: 'ID', field: '_id', editable: false},
-      { title: 'Name', field: 'name' },
-      { title: 'Shop', field: 'shop_name' },
-      { title: 'Mobile', field: 'mobile' },
-      { title: 'Address', field: 'address'},
-    ],
+      { title: "ID", field: "_id", editable: false },
+      { title: "Name", field: "name" },
+      { title: "Shop", field: "shop_name" },
+      { title: "Mobile", field: "mobile" },
+      { title: "Address", field: "address" }
+    ]
   });
-  const {customers, getCustomerData} = useContext(MyContext)
-  const [isLoadig, setIsLoading] = React.useState(false)
+  const { customers, getCustomerData } = useContext(MyContext);
+  const [isLoadig, setIsLoading] = React.useState(false);
 
-  const addRow = async (newData) => {
+  const addRow = async newData => {
     setIsLoading(true);
-    const called = await addRecord('customer/create',newData)
-    getCustomerData()
-      setIsLoading(false)
-  }
+    await addRecord("customer/create", newData);
+    getCustomerData();
+    setIsLoading(false);
+  };
 
-  const updateRow = async (newData) => {
+  const updateRow = async newData => {
     setIsLoading(true);
-    const called = await updateRecord('customer/update',newData._id,newData)
-    getCustomerData()
-    setIsLoading(false)
-  }
+    await updateRecord("customer/update", newData._id, newData);
+    getCustomerData();
+    setIsLoading(false);
+  };
 
-  const deleteRow = async (newData) => {
+  const deleteRow = async newData => {
     setIsLoading(true);
-    const called = await deleteRecord('customer/remove',newData._id)
-    getCustomerData()
-    setIsLoading(false)
-  }
+    await deleteRecord("customer/remove", newData._id);
+    getCustomerData();
+    setIsLoading(false);
+  };
 
   return (
     <Table
@@ -45,7 +44,7 @@ export default function MaterialTableDemo() {
       isLoading={isLoadig}
       addRow={addRow}
       updateRow={updateRow}
-      deleteRow={updateRow}
+      deleteRow={deleteRow}
     />
   );
 }

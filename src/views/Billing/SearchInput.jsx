@@ -1,61 +1,58 @@
-import React from 'react'
-import SearchIcon from '@material-ui/icons/Search'
-import InputBase from '@material-ui/core/InputBase'
-import { fade, makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import FilledInput from '@material-ui/core/FilledInput'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import InputLabel from '@material-ui/core/InputLabel'
-import FormControl from '@material-ui/core/FormControl'
-import InputAdornment from '@material-ui/core/InputAdornment'
+/* eslint-disable react/prop-types */
+import React from "react";
+import SearchIcon from "@material-ui/icons/Search";
+import { fade, makeStyles } from "@material-ui/core/styles";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles(theme => ({
   margin: {
     margin: theme.spacing(1)
   },
   search: {
-    height: '50px',
-    position: 'relative',
+    height: "50px",
+    position: "relative",
     borderRadius: theme.shape.borderRadius,
-    '&:hover': {
+    "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: 'auto'
+      width: "auto"
     },
-    marginTop: '100px'
+    marginTop: "100px"
   },
   searchIcon: {
     width: theme.spacing(7),
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
   inputRoot: {
-    color: 'inherit'
+    color: "inherit"
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
       width: 200
     }
   }
-}))
+}));
 const SearchInput = ({ value, handleFilter }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <div className={classes.search}>
-      <FormControl fullWidth className={classes.margin} variant='outlined'>
-        <InputLabel htmlFor='outlined-adornment-amount'>Amount</InputLabel>
+      <FormControl fullWidth className={classes.margin} variant="outlined">
+        <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
         <OutlinedInput
-          id='outlined-adornment-amount'
+          id="outlined-adornment-amount"
           value={value}
           onChange={handleFilter}
           startAdornment={<SearchIcon />}
@@ -63,8 +60,8 @@ const SearchInput = ({ value, handleFilter }) => {
         />
       </FormControl>
     </div>
-  )
-}
+  );
+};
 // <div className={classes.search}>
 //   <SearchIcon />
 //   <TextField
@@ -81,7 +78,7 @@ const SearchInput = ({ value, handleFilter }) => {
 //     variant='outlined'
 //   />
 // </div>
-export default SearchInput
+export default SearchInput;
 // <div className={classes.search}>
 //       <div className={classes.searchIcon}>
 //         <SearchIcon />

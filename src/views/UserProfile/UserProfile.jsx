@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /*!
 
 =========================================================
@@ -31,8 +32,8 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
-import FireBase, { database, auth } from "../../firebase";
-import getArray from "utils/index"
+import { database } from "../../firebase";
+
 import avatar from "assets/img/faces/marc.jpg";
 
 const styles = {
@@ -56,15 +57,12 @@ const styles = {
 
 function UserProfile(props) {
   function submit() {
-    const obj1 = { a: 2 };
-    const obj2 = { d: 3 };
-
-    const userArray = [];
-    const ref = database.ref('Users/User/-LkXUEy0wA9zYoR4Yf1w');
-    ref.set({
-      email: 'aaaaa'
-    }).then(sna => console.log("snap",sna))
-     
+    const ref = database.ref("Users/User/-LkXUEy0wA9zYoR4Yf1w");
+    ref
+      .set({
+        email: "aaaaa"
+      })
+      .then(sna => console.log("snap", sna));
 
     database
       .ref()

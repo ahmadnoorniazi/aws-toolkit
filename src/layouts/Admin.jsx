@@ -27,7 +27,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Navbar from "components/Navbars/Navbar.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
 
 import routes from "routes.js";
 
@@ -36,7 +35,7 @@ import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboar
 import image from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";
 
-import { MyContext } from '../stateContext'
+import { MyContext } from "../stateContext";
 
 let ps;
 
@@ -59,7 +58,7 @@ const switchRoutes = (
 );
 
 class Dashboard extends React.Component {
-  static contextType = MyContext
+  static contextType = MyContext;
   state = {
     image: image,
     color: "blue",
@@ -114,7 +113,7 @@ class Dashboard extends React.Component {
   }
   render() {
     const { classes, ...rest } = this.props;
-    const { showSideBar } = this.context
+    const { showSideBar } = this.context;
     return (
       <div className={classes.wrapper}>
         <Sidebar
@@ -135,7 +134,7 @@ class Dashboard extends React.Component {
             {...rest}
           />
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-          {this.getRoute()? (
+          {this.getRoute() ? (
             <div className={showSideBar && classes.content}>
               <div className={classes.container}>{switchRoutes}</div>
             </div>

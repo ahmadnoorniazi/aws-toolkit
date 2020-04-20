@@ -1,4 +1,4 @@
-
+/* eslint-disable react/prop-types */
 import React from "react";
 // nodejs library to set properties for components
 // @material-ui/core components
@@ -8,7 +8,7 @@ import GridItem from "components/Grid/GridItem.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
-import NavBar from '../../views/Billing/BillingNavBar'
+
 const styles = {
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
@@ -40,18 +40,14 @@ const styles = {
 };
 
 function Header(props) {
-  const { classes,tableHeader,tableValues } = props;
+  const { classes } = props;
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
         <Card plain>
           <CardHeader plain color="primary">
-            <h4 className={classes.cardTitleWhite}>
-              BILL
-            </h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is all items 
-            </p>
+            <h4 className={classes.cardTitleWhite}>BILL</h4>
+            <p className={classes.cardCategoryWhite}>Here is all items</p>
           </CardHeader>
         </Card>
       </GridItem>

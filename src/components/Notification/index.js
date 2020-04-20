@@ -1,4 +1,6 @@
-import React, {useEffect} from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import Slide from "@material-ui/core/Slide";
@@ -16,7 +18,7 @@ function Alert(props) {
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: "100%",
     "& > * + *": {}
@@ -31,8 +33,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-export default function DirectionSnackbar({open, setOpen, message}) {
+export default function DirectionSnackbar({ open, setOpen, message }) {
   const [transition, setTransition] = React.useState(undefined);
 
   const handleClose = () => {
@@ -40,10 +41,10 @@ export default function DirectionSnackbar({open, setOpen, message}) {
   };
 
   useEffect(() => {
-   if (open){
-     setTimeout(handleClose, 5000);
-   }
-  }, [open])
+    if (open) {
+      setTimeout(handleClose, 5000);
+    }
+  }, [open]);
   const classes = useStyles();
 
   return (
