@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 
 export const MyContext = React.createContext({
   customers: [],
@@ -10,9 +9,9 @@ export const MyContext = React.createContext({
   setShowSideBar: () => {},
   secondCart: null,
   setSecondCart: () => {},
-  user: null, 
+  user: null,
   setUser: () => {},
   clearStorage: () => {}
 });
 
-export const Provider = MyContext.Provider
+export const Provider = MyContext.Provider;
