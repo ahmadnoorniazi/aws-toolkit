@@ -10,7 +10,7 @@
 
 # npmjs
 /dist
-/employee_backend
+/backend
 # misc
 .DS_Store
 .env.local
