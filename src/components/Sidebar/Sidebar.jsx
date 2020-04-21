@@ -95,10 +95,7 @@ const Sidebar = ({ ...props }) => {
     </List>
   );
   var brand = (
-    <div style={{background: 'crimson'}} className={classes.logo}>
-    <Typography style={{color: "#FFF"}} variant="h6" noWrap>
-    {"Moderen Electric"}
-  </Typography>
+    <div style={{background: 'crimson', marginTop: "50px"}} className={classes.logo}>
     <ImageAvatars />
     </div>
   );

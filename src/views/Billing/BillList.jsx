@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 import React, { useContext } from "react";
-import MaterialTable from "material-table";
 import ButtonCounter from "./ButtonCounter";
 import BillingState from "./cartState";
+import Table from "../../components/BillTable/BillTable";
 
 export default function MaterialTableDemo({
   billData,
@@ -37,7 +37,7 @@ export default function MaterialTableDemo({
   };
 
   return (
-    <MaterialTable
+    <Table
       style={{ marginTop: "100px" }}
       options={{
         exportButton: true,
@@ -52,18 +52,9 @@ export default function MaterialTableDemo({
         minBodyHeight: `${specificWidth}px`,
         pageSize: 5
       }}
-      title="Add New Product"
       columns={state.columns}
       data={billData}
-      editable={{
-        onRowDelete: oldData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              onDeleteRow(oldData);
-            }, 600);
-          })
-      }}
+      deleteRow={onDeleteRow}
     />
   );
 }

@@ -161,7 +161,7 @@ class Example extends React.Component {
       <div>
         <ReactToPrint
           trigger={() => (
-            <a href="/">
+            <a href="#">
               <ButtonProp />
             </a>
           )}

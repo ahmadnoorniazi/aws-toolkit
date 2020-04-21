@@ -1,19 +1,25 @@
-import React from 'react';
-import MaterialTable from 'material-table';
+import React from "react";
+import MaterialTable from "material-table";
 
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
-      { title: 'ID', field: 'id' },
-      { title: 'Product Name', field: 'name' },
-      { title: 'Product Type', field: 'type' },
-      { title: 'Quantity', field: 'description' },
-      { title: 'Price', field: 'sale_price'},
-      { title: 'Date', field: 'actual_price'}
+      { title: "ID", field: "id" },
+      { title: "Product Name", field: "name" },
+      { title: "Product Type", field: "type" },
+      { title: "Quantity", field: "description" },
+      { title: "Price", field: "sale_price" },
+      { title: "Date", field: "actual_price" }
     ],
     data: [
-      {name: 'Mehmet', type: 'Baran', description : 'Detaiil', sale_price: 1987, actual_price: 63 },
-    ],
+      {
+        name: "Mehmet",
+        type: "Baran",
+        description: "Detaiil",
+        sale_price: 1987,
+        actual_price: 63
+      }
+    ]
   });
 
   return (
@@ -56,7 +62,7 @@ export default function MaterialTableDemo() {
                 return { ...prevState, data };
               });
             }, 600);
-          }),
+          })
       }}
     />
   );

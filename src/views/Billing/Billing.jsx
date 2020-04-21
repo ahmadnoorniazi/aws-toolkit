@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
   itemText: {
     fontSize: "20px",
     fontWeight: "bold",
-    width: "200px",
+    maxWidth: "200px",
     overflow: "hidden",
     "text-overflow": "ellipsis"
   }
@@ -249,10 +249,11 @@ function Billing() {
                             onKeyPress={e => onKeyEnter(e, item)}
                             tabIndex={0}
                             onClick={() => addItemtoCart(item)}
-                            style={{ width: "200px" }}
+                            style={{ width: "200px", position: "relative" }}
                           >
-                            <div key={item} className={classes.itemText}>
-                              {item.name}
+                            <div className={classes.itemText}>{item.name}</div>
+                            <div className="second-under">
+                              <p>Rs {item.sale_price}</p>
                             </div>
                           </div>
                         ))

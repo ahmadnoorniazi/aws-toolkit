@@ -18,17 +18,34 @@
     display: inline-flex;
   }
   .grid-container > div {
-    background-color: #01579b;
+    background-color: #FFF;
     text-align: center;
     padding: 50px 0;
     font-size: 30px;
+    color: crimson;
+    border: 2px solid red;
+    border-bottom: 3px solid crimson;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: -webkit-pictograph;
+  }
+  .second-under{
+    background-color : crimson;
+    width: 100%;
     color: #FFF;
-  ;
+    height: 40px;
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    left: 0;
+  }
+
+  .second-under > p {
+    margin-top: 8px;
+    font-family: -webkit-pictograph;
   }
   .grid-container > div:focus {
-    background-color : #FFF;
-    border: 3px solid #01579b;
-    color: #01579b;
+    background-color: khaki;
   }
 
   @media only screen and (min-width: 768px) {
@@ -37,9 +54,7 @@
     }
   } 
   .grid-container > div:hover {
-    background-color : #FFF;
-    border: 3px solid #01579b;
-    color: #01579b;
+    background-color: khaki;
   }
   .invoice-box {
     display: none;

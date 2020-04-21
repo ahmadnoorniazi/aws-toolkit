@@ -6,7 +6,7 @@ import Table from "../../components/BillTable/BillTable";
 export default function MaterialTableDemo() {
   const [state] = React.useState({
     columns: [
-      { title: "ID", field: "_id", editable: false },
+      { title: "ID", field: "_id", editable: false, hidden: true },
       { title: "Name", field: "name" },
       { title: "Shop", field: "shop_name" },
       { title: "Mobile", field: "mobile" },

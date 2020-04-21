@@ -8,6 +8,15 @@ function cloneArray(Objects) {
 
 export default cloneArray;
 
+axios.interceptors.response.use(
+  response => {
+    return response;
+  },
+  function(error) {
+    Promise.reject(error);
+  }
+);
+
 export async function getRecord(path) {
   try {
     const product = await axios.get(`${baseUrl}${path}`);

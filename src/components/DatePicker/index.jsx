@@ -74,6 +74,7 @@ export default function MaterialUIPickers({ getDateValues, resetTable }) {
             variant="contained"
             color="primary"
             size="large"
+            style={{ backgroundColor: "crimson" }}
             startIcon={<Search />}
             onClick={handleSearchBill}
             disabled={isDisable}
@@ -81,7 +82,7 @@ export default function MaterialUIPickers({ getDateValues, resetTable }) {
             Filter
           </Button>
           <Button
-            style={{ marginLeft: "40px" }}
+            style={{ marginLeft: "40px", backgroundColor: "crimson" }}
             variant="contained"
             color="primary"
             size="large"

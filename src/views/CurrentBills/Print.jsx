@@ -41,6 +41,7 @@ const Print = ({ rowData }) => {
           variant="contained"
           color="primary"
           size="large"
+          style={{ backgroundColor: "crimson" }}
           startIcon={<PrintIcon />}
         >
           Print

@@ -10,7 +10,8 @@ export default function MaterialTableDemo({
   isLoadig,
   addRow,
   updateRow,
-  deleteRow
+  deleteRow,
+  ...rest
 }) {
   return (
     <MaterialTable
@@ -18,6 +19,7 @@ export default function MaterialTableDemo({
       isLoading={isLoadig}
       columns={columns}
       data={data}
+      {...rest}
       editable={{
         onRowAdd: addRow,
         onRowUpdate: updateRow,
@@ -28,7 +30,8 @@ export default function MaterialTableDemo({
         actionsColumnIndex: -1,
         headerStyle: {
           backgroundColor: "crimson",
-          color: "#FFF"
+          color: "#FFF",
+          textAlign: "center"
         },
         rowStyle: {
           backgroundColor: "#EEE"

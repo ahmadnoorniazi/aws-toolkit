@@ -35,33 +35,37 @@ function CustomTable({ ...props }) {
         {tableHead !== undefined ? (
           <TableHead className={classes[tableHeaderColor + "TableHeader"]}>
             <TableRow className={classes.tableHeadRow}>
-              {tableHead && tableHead.map((prop, key) => {
-                return (
-                  <TableCell
-                    className={classes.tableCell + " " + classes.tableHeadCell}
-                    key={key}
-                  >
-                    {prop}
-                  </TableCell>
-                );
-              })}
-            </TableRow>
-          </TableHead>
-        ) : null}
-        <TableBody>
-          {tableData && tableData.map((prop, key) => {
-            return (
-              <TableRow key={key} className={classes.tableBodyRow}>
-                {prop.map((prop, key) => {
+              {tableHead &&
+                tableHead.map((prop, key) => {
                   return (
-                    <TableCell className={classes.tableCell} key={key}>
+                    <TableCell
+                      className={
+                        classes.tableCell + " " + classes.tableHeadCell
+                      }
+                      key={key}
+                    >
                       {prop}
                     </TableCell>
                   );
                 })}
-              </TableRow>
-            );
-          })}
+            </TableRow>
+          </TableHead>
+        ) : null}
+        <TableBody>
+          {tableData &&
+            tableData.map((prop, key) => {
+              return (
+                <TableRow key={key} className={classes.tableBodyRow}>
+                  {prop.map((prop, key) => {
+                    return (
+                      <TableCell className={classes.tableCell} key={key}>
+                        {prop}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
         </TableBody>
       </Table>
     </div>

@@ -2,12 +2,11 @@ import React, { useContext, Fragment } from "react";
 import { MyContext } from "../../stateContext";
 import { addRecord, updateRecord, deleteRecord } from "../../utils/index";
 import Table from "../../components/BillTable/BillTable";
-import Notification from "../../components/Notification";
 
 export default function MaterialTableDemo() {
   const [state] = React.useState({
     columns: [
-      { title: "ID", field: "_id", editable: false },
+      { title: "ID", field: "_id", editable: false, hidden: true },
       { title: "Product Name", field: "name" },
       { title: "Product Type", field: "type" },
       { title: "Description", field: "description" },
@@ -41,7 +40,6 @@ export default function MaterialTableDemo() {
 
   return (
     <Fragment>
-      <Notification />
       <Table
         isLoading={isLoadig}
         columns={state.columns}
