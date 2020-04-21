@@ -1,12 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
+
 import "./Billing.css";
 import BillList from "./BillList";
 import { getRecord } from "../../utils/index";
-import { MyContext, Provider } from "../../stateContext";
+import { MyContext } from "../../stateContext";
 import SearchInput from "./SearchInput";
 import ScrollContainer from "./ScrollContainer";
 import BillDetailTable from "./BillDetailTable";
+import { Provider } from "./cartState";
 import IconLabelButtons from "./SaveButtonList";
 
 const useStyles = makeStyles(theme => ({
@@ -66,12 +69,7 @@ const useStyles = makeStyles(theme => ({
     "text-overflow": "ellipsis"
   }
 }));
-// const useStyles = makeStyles(theme => ({
-//     container: {
-//       display: 'flex',
-//       flexWrap: 'wrap',
-//     },
-// }));
+
 function Billing() {
   const [input, setInput] = useState("");
   const [data, setData] = useState([]);
@@ -86,13 +84,13 @@ function Billing() {
   const [taxValue, setTaxValue] = React.useState("");
 
   const [width, setWidth] = useState(500);
-
+  //eslint-disable-next-line
   useEffect(() => {
     getProductData();
     if (window.screen.width >= 992) {
       setWidth(450);
     }
-  }, [getProductData]);
+  }, []);
 
   useEffect(() => {
     const total =
@@ -208,6 +206,7 @@ function Billing() {
     const result = await getRecord(`product/filter/${input}`);
     setData(result.data);
   };
+
   const classes = useStyles();
   const showProduct =
     products && Array.isArray(products) && products.length > 0 && isInputClean
