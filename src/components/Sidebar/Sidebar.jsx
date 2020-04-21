@@ -28,6 +28,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
+import Typography from "@material-ui/core/Typography";
+
 // core components
 import AdminNavbarLinks from "components/Navbars/AdminNavbarLinks.jsx";
 import RTLNavbarLinks from "components/Navbars/RTLNavbarLinks.jsx";
@@ -50,7 +52,7 @@ const Sidebar = ({ ...props }) => {
         var activePro = " ";
         var listItemClasses;
           listItemClasses = classNames({
-            [" " + classes[color]]: activeRoute(prop.layout + prop.path)
+            [" " + classes["red"]]: activeRoute(prop.layout + prop.path)
           });
         const whiteFontClasses = classNames({
           [" " + classes.whiteFont]: activeRoute(prop.layout + prop.path)
@@ -62,6 +64,7 @@ const Sidebar = ({ ...props }) => {
             activeClassName="active"
             key={key}
           >
+          {console.log('lolololol',listItemClasses)}
             <ListItem button className={classes.itemLink + listItemClasses}>
               {typeof prop.icon === "string" ? (
                 <Icon
@@ -92,7 +95,10 @@ const Sidebar = ({ ...props }) => {
     </List>
   );
   var brand = (
-    <div className={classes.logo}>
+    <div style={{background: 'crimson'}} className={classes.logo}>
+    <Typography style={{color: "#FFF"}} variant="h6" noWrap>
+    {"Moderen Electric"}
+  </Typography>
     <ImageAvatars />
     </div>
   );
@@ -138,7 +144,7 @@ const Sidebar = ({ ...props }) => {
           }}
         >
           {brand}
-          <div className={classes.sidebarWrapper}>{links}</div>
+          <div className={classes.sidebarWrapper} style={{background: 'crimson'}}>{links}</div>
           {image !== undefined ? (
             <div
               className={classes.background}

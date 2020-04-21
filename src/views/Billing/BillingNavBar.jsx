@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Dashboard";
+import MenuIcon from "@material-ui/icons/Home";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -84,9 +84,7 @@ export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const { showSideBar, setShowSideBar, user, clearStorage } = useContext(
-    MyContext
-  );
+  const { showSideBar, setShowSideBar, clearStorage } = useContext(MyContext);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -176,7 +174,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" style={{ background: "#42A5F5" }}>
+      <AppBar position="static" style={{ background: "crimson" }}>
         <Toolbar>
           <Link to="admin/dashboard">
             <IconButton
@@ -190,7 +188,7 @@ export default function PrimarySearchAppBar() {
             </IconButton>
           </Link>
           <Typography className={classes.title} variant="h6" noWrap>
-            {(user && user.user && user.user.shopname) || "Material-UI"}
+            {"DashBoard"}
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

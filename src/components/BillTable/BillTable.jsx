@@ -27,7 +27,7 @@ export default function MaterialTableDemo({
         exportButton: true,
         actionsColumnIndex: -1,
         headerStyle: {
-          backgroundColor: "yellowgreen",
+          backgroundColor: "crimson",
           color: "#FFF"
         },
         rowStyle: {
@@ -39,7 +39,7 @@ export default function MaterialTableDemo({
         // eslint-disable-next-line react/display-name
         Add: props => (
           <Button
-            style={{ backgroundColor: "#0069d9" }}
+            style={{ backgroundColor: "crimson" }}
             variant="contained"
             color="primary"
             size="large"
