@@ -26,6 +26,7 @@ export default function MaterialTableDemo({
         onRowDelete: deleteRow
       }}
       options={{
+        ...rest.options,
         exportButton: true,
         actionsColumnIndex: -1,
         headerStyle: {

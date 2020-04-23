@@ -1,5 +1,5 @@
 .MuiIcon-root{
-  color: #01579b;
+  color: crimson;
 }
 .grid-container {
     display: grid;
@@ -102,7 +102,7 @@
     background-color: #01579b;
   } */
   .MuiTypography-caption{
-    color: #01579b;
+    color:  crimson;
     font-weight: 1rem;
     font-size: large;
   }
@@ -117,7 +117,7 @@
   #bottom {
       bottom: 0;
       height: 10%;
-      background-color: #42A5F5;
+      background-color: crimson;
       text-align: center;
   
   }
@@ -155,11 +155,11 @@
     text-align: left;
   }
   #bottomTable >  table#t01 >  th {
-    background-color: rgb(1, 87, 155);
+    background-color:crimson;
     color: white;
   }
   #bottomTable > table#t01 > tr >td{
-    background-color:  rgb(1, 87, 155);
+    background-color:  crimson;
     color: #FFF;
     font-size: 20px;
     font-weight: 700;
@@ -175,7 +175,7 @@
     /* Equal to height of footer */
     /* But also accounting for potential margin-bottom of last child */
     margin-bottom: -50px;
-    background-color: #42A5F5;
+    background-color :crimson;
   }
   .footer,
   .push {

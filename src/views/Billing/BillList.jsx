@@ -50,7 +50,7 @@ export default function MaterialTableDemo({
           backgroundColor: "#EEE"
         },
         minBodyHeight: `${specificWidth}px`,
-        pageSize: 5
+        pageSizeOptions: [5, 10, 11]
       }}
       columns={state.columns}
       data={billData}
