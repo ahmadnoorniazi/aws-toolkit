@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://moderenelectric.ml/";
+const baseUrl = "https://moderenelectric.ml/";
 
 function cloneArray(Objects) {
   return Object.keys(Objects).map(key => ({ ...Objects[key], id: key }));
