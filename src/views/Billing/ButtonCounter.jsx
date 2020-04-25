@@ -17,12 +17,12 @@ export default function ButtonCounter({ row }) {
   };
 
   return (
-    <div style={{ width: "100px", color: "#0069d9", fontWeight: "bold" }}>
+    <div style={{ width: "100px", color: "navy", fontWeight: "bold" }}>
       <button
         onClick={handleDecrementCounter}
         style={{
           borderRadius: "10px",
-          background: "#0069d9",
+          background: "crimson",
           color: "#FFF",
           fontWeight: "bold",
           width: "25px",
@@ -36,7 +36,7 @@ export default function ButtonCounter({ row }) {
       <button
         style={{
           borderRadius: "10px",
-          background: "#0069d9",
+          background: "crimson",
           color: "#FFF",
           fontWeight: "bold",
           width: "25px",
